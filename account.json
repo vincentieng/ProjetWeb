@@ -42,5 +42,9 @@
   {
     "email": "tieng@com",
     "password": "tieng"
+  },
+  {
+    "email": "r@com",
+    "password": "fom"
   }
 ]
