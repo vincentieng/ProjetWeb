@@ -1,0 +1,132 @@
+var http = require('http');
+var fs = require('fs');
+var express = require('express');
+var bodyParser = require('body-parser');
+var path = require('path');
+var vm = require('vm');
+var sessions = require('express-session');
+var jsonFile = require('jsonfile');
+
+var session;
+
+var app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(sessions({
+  secret: 'test'
+}))
+app.use('/public', express.static('public'));
+// Parse mail and password
+var contenu;
+contenu = fs.readFileSync("account.json", "UTF-8");
+var js = JSON.parse(contenu);
+
+app.get('/login', function (req,resp){
+  session = req.session;
+  if (session.uniqueID) {
+    resp.redirect('/redirects');
+  }
+
+  resp.sendFile(__dirname + '/public/signin.html');
+  //resp.sendFile('./public/contact.html',{root:__dirname});
+
+});
+//Sign up
+app.get('/signup', function(req,resp){
+  resp.sendFile('./signUp.html',{root:__dirname});
+})
+
+//Login test
+app.post('/login', function (req,resp){
+  //resp.end(JSON.stringify(req.body));
+  session = req.session;
+  if (session.uniqueID) {
+    resp.redirect('/redirects');
+  }
+  for(var i = 0; i<js.length; i++){
+  if(req.body.email == js[i].email && req.body.password == js[i].password){
+    session.uniqueID = req.body.email;
+  }
+  }
+  resp.redirect('/redirects');
+});
+
+app.post('/logout', function(req,resp){
+  req.session.destroy(function(error){
+    console.log(error);
+    resp.redirect('/login');
+  });
+});
+app.get('/redirects', function(req,resp){
+  session = req.session;
+  if (session.uniqueID) {
+    resp.sendFile('./public/contact.html',{root:__dirname});
+  }
+  else {
+    resp.sendFile(__dirname + '/public/signin.html');
+  }
+})
+app.post('/createAccount', function(req,resp){ //Post Response
+  var mail = req.body.email;
+  var password = req.body.password;
+
+   try {
+        let userData = fs.readFileSync('account.json');
+        userData = JSON.parse(userData);
+        userData.push({
+           email:mail,
+           password:password
+        });
+        fs.writeFileSync('account.json', JSON.stringify(userData,null,2));
+    } catch (error) {
+        console.log(error);
+    }
+  resp.sendFile('./public/contact.html',{root:__dirname});
+});
+
+app.post('/', function(req,resp){ //Post Response
+  var familyName = req.body.familyName;
+  var name = req.body.name;
+  var promotion = req.body.promotion;
+  var mail = req.body.email;
+  var events = req.body.event;
+
+   try {
+        let userData = fs.readFileSync('attendants.json');
+        userData = JSON.parse(userData);
+        userData.push({
+           FamilyName:familyName,
+           Name:name,
+           promotion:promotion,
+           email:mail,
+           events:events
+        });
+        fs.writeFileSync('attendants.json', JSON.stringify(userData,null,2));
+    } catch (error) {
+        console.log(error);
+    }
+  resp.sendFile('./public/contact.html',{root:__dirname});
+});
+
+
+app.listen(1337,function(){
+  console.log('Listening at port 1337');
+})
+
+
+
+/*fs.readFile('index.html',(err,html)=>{
+  if(err){
+    throw err;
+  }
+  const server = http.createServer((req,res) => {
+    res.statusCode = 200;
+    res.setHeader('Content-type','text/html');
+    res.write(html);
+    res.end();
+  });
+
+  server.listen(port, hostname,()=>{
+    console.log('Server started on port'+port);
+  });
+});*/
