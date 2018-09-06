@@ -27,18 +27,21 @@ app.get('/login', function (req,resp){
     resp.redirect('/redirects');
   }
 
-  resp.sendFile(__dirname + '/public/signin.html');
+  resp.sendFile(__dirname + '/views/signin.html');
   //resp.sendFile('./public/contact.html',{root:__dirname});
 
 });
 //Sign up
 app.get('/signup', function(req,resp){
-  resp.sendFile('./signUp.html',{root:__dirname});
+  resp.sendFile('./src/signUp.html',{root:__dirname});
 })
 
 //Login test
 app.post('/login', function (req,resp){
   //resp.end(JSON.stringify(req.body));
+  var contenu;
+  contenu = fs.readFileSync("account.json", "UTF-8");
+  var js = JSON.parse(contenu);
   session = req.session;
   if (session.uniqueID) {
     resp.redirect('/redirects');
@@ -60,10 +63,10 @@ app.post('/logout', function(req,resp){
 app.get('/redirects', function(req,resp){
   session = req.session;
   if (session.uniqueID) {
-    resp.sendFile('./public/contact.html',{root:__dirname});
+    resp.sendFile('./src/contact.html',{root:__dirname});
   }
   else {
-    resp.sendFile(__dirname + '/public/signin.html');
+    resp.sendFile(__dirname + '/views/signin.html');
   }
 })
 app.post('/createAccount', function(req,resp){ //Post Response
@@ -81,7 +84,7 @@ app.post('/createAccount', function(req,resp){ //Post Response
     } catch (error) {
         console.log(error);
     }
-  resp.sendFile('./public/contact.html',{root:__dirname});
+  resp.sendFile('./src/contact.html',{root:__dirname});
 });
 
 app.post('/', function(req,resp){ //Post Response
@@ -105,12 +108,12 @@ app.post('/', function(req,resp){ //Post Response
     } catch (error) {
         console.log(error);
     }
-  resp.sendFile('./public/contact.html',{root:__dirname});
+  resp.sendFile('./src/contact.html',{root:__dirname});
 });
 
 
-app.listen(1337,function(){
-  console.log('Listening at port 1337');
+app.listen(3000,function(){
+  console.log('Listening at port 3000');
 })
 
 

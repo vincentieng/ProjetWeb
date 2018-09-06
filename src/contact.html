@@ -35,7 +35,7 @@
         </ul>
       </div>
       <form  action="/logout" method="post">
-        <input type="image" src="./public/deconnecte.png" alt="Submit Form" style="width :30px"/>
+        <input type="image" src="./public/assets/deconnecte.png" alt="Submit Form" style="width :30px"/>
       </form>
 
       <div id="demo">
@@ -56,11 +56,11 @@
             </div>
 
             <div class="col">
-              <img src="im2.jpg" class="image" align="right">
+              <img src="./public/assets/im2.jpg" class="image" align="right">
             </div>
           </div>
               <hr style="height: 2px; color: #839D2D; background-color: #839D2D; width: 100%">
-          <h1>Here are the differents company that will attend the event</h1>
+          <h1 >Here are the differents University that you can attend</h1>
           <table  class="table table-bordered"style="width:500px ; margin-left : 400px; margin-bottom : -20px ; margin-top: 20px" >
             <td align="center" style="width:26%">
               <p>Name</p>
@@ -93,7 +93,7 @@
 
         <section id="Company">
           <h1 id="entreprise"> Business Forum</h1>
-          <div class="form-row" style="margin-top : 20px">
+          <div class="form-row" style="margin-top : 20px; height:1500px">
               <div class="col">
                 <p class="text">
                 <br>The <b>Business Forum</b>(BF) is <b>one of the first events of the year</b>.</br><br></br>
@@ -110,8 +110,12 @@
               </div>
 
               <div class="col">
-                <img src="/public/im1.jpg" class="image" align="right">
+                <img src="/public/assets/im1.jpg" class="image" align="right">
               </div>
+              <hr style="height: 2px; color: #839D2D; background-color: #839D2D; width: 100%">
+
+              <h1 style="margin-left:140px; margin-top : 8px">Here are the differents company that will attend the event</h1>
+
           <table style="width:500px ; margin-left : 400px; margin-bottom : -20px"class="table table-bordered">
             <td style="width:35%">
               <p>Name</p>
@@ -204,46 +208,75 @@
     </div>
 
     </form>
--->
- <div id="reservation">
-   <form action="/" method="post">
+-->  <div id="reservation" class="all form-row">
 
-       <div class="inputWithIcon">
-         <p>Family Name :</p>
-         <input v-model.trim="message" name="familyName" type="text" placeholder="Ex :Petterson" id="familyname">
-         <i class="fa fa-user fa-lg fa-fw" style="position :absolute; top :50px"aria-hidden="true"></i>
-       </div>
-       <div class="inputWithIcon">
-         <p>Family Name :</p>
-         <input v-model.trim="message" name="name" type="text" placeholder="Ex : Jason" id="name">
-         <i class="fa fa-user fa-lg fa-fw" style="position :absolute; top :50px"aria-hidden="true"></i>
-       </div>
-         <p>Choose your promotion</p>
-           <select v-model="selected" name="promotion"id="promotion">
-             <option disabled value="">Choose</option>
-             <option>1A</option>
-             <option>2A</option>
-             <option>3A</option>
-             <option>4A</option>
-             <option>5A</option>
-           </select>
+      <div class="form-group col form">
 
-           <div class="inputWithIcon">
-             <input v-model.trim="message" name="email" type="text" placeholder="Ex:petterson@gmail.com" id="email"required>
-             <i class="fa fa-envelope fa-lg fa-fw" style="position :absolute; top :15px" aria-hidden="true"></i>
-           </div>
-         <p>Event</p>
-           <select v-model="selected" id="event" name="event">
-               <option disabled value="">Choose</option>
-               <option>FE only</option>
-               <option>FI only</option>
-               <option>FE and FI</option>
-           </select>
-           <br>
-         <input type="submit" name="" value="Inscription">
-         <input type="reset" name="" value="Delete my response">
-       </form>
+        <div class="form-row pad">
+          <div class="form-group col">
+            <label class="col-form-label">Family Name :</label>
+            <input v-model="familyName" class="form-control form-control-sm" placeholder="Ex:Petterson" id="familyname">
+          </div>
+          <div class="form-group col">
+            <label class="col-form-label">Name :</label>
+            <input v-model="name" class="form-control form-control-sm" placeholder="Ex:Jason" id="name">
+          </div>
+        </div>
+
+        <div class="form-group col-auto">
+            <label class="col-form-label">Email :</label>
+            <input v-model="email" class="form-control form-control-sm" placeholder="Ex:petterson@gmail.com" id="email">
+        </div>
+
+        <div class="form-row pad2">
+          <div class="form-group col">
+            <p>Promotion</p>
+            <select class= "form-control custom-select-sm" v-model="promotion" id="promotion">
+              <option disabled value="">Choose</option>
+              <option>1A</option>
+              <option>2A</option>
+              <option>3A</option>
+              <option>4A</option>
+              <option>5A</option>
+            </select>
+          </div>
+          <div class="form-group col">
+            <p>Event</p>
+            <select class= "form-control custom-select-sm" v-model="event" id="event">
+              <option disabled value="">Choose</option>
+              <option>FE only</option>
+              <option>FI only</option>
+            </select>
+          </div>
+        </div>
+
+        <button v-on:click="confirm" class="btn btn-success">Inscription</button>
+        <button v-on:click="clear" class="btn btn-danger">Delete</button>
+
+      </div>
+
+  <!--Tableau utilisé-->
+
+    <div>
+
+      <table class="table form-group col tab ">
+        <th>Family Name</th>
+        <th>Name</th>
+        <th>Promotion</th>
+        <th>Email</th>
+        <th>Event</th>
+        <tr v-for="person in myArray">
+          <td v-html = "person.FamilyNm"></td>
+          <td v-html = "person.Nm" ></td>
+          <td v-html = "person.promo "></td>
+          <td v-html = "person.mail"></td>
+          <td v-html = "person.ev"></td>
+        </tr>
+      </table>
+  </div>
+
 </div>
+
 <div class="Contacter" style="height:600px" id="contact">
   <h1>Here is how you can find us :</h1>
   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2627.284650195612!2d2.3762239157823872!3d48.814630079283305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e673ccc53893d3%3A0x4cbb99dd41145a86!2s74+Avenue+Maurice+Thorez%2C+94200+Ivry-sur-Seine!5e0!3m2!1sfr!2sfr!4v1536224265411"
@@ -299,6 +332,61 @@
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
       <script src="https://unpkg.com/vue/dist/vue.js"></script>
+      <script>
+      var dataconfirm = new Vue({
+        el: '#reservation',
+        data: {
+          familyName: '',
+          name: '',
+          promotion:'',
+          email:'',
+          event:'',
+          myArray: [],
+        },
+         methods: {
 
+           confirm: function() {
+            /*On crée nos variables*/
+            var client = {FamilyNm:this.familyName, Nm:this.name, promo:this.promotion, mail:this.email, ev:this.event};
+            var txt = '';
+              /*On crée le texte d'alerte : si plusieurs conditions ne sont pas validées
+              plusieurs phrases apparaissent sur le même message d'alerte*/
+              if (client.FamilyNm===''){
+                txt=txt+'You forget to write your Family Name \n';}
+              if (client.Nm===''){
+                txt=txt+'You forget to put your name \n';}
+              if (client.promo==''){
+                txt=txt+'You forget to select your promotion \n';}
+              if (client.ev==''){
+                txt=txt+'You forget to select an event \n';}
+              if (client.mail===''){
+                txt=txt+'You forget to indicate your email adress\n';}
+              if (client.FamilyNm!=''&&client.Nm!=''&&client.mail!=''&&client.ev!=''&&client.promo!='') {
+                  txt='Valid Inscription : Good luck';
+                  this.myArray.push(client);
+                }
+
+              alert(txt);
+              document.getElementById("familyname").value =document.getElementById("name").value=document.getElementById("email").value='';
+              document.getElementById("event").value=document.getElementById("promotion").value='';
+
+          },
+
+          clear : function(){
+            //console.log(this.myArray.FamilyNm[0]);
+            var message = prompt("Research a name", "Put your name");
+            //Essayer de comparer la variable "message" à celle contenant le nom lors du login
+            if(message!=null){
+              dataconfirm.myArray = dataconfirm.myArray.filter(function (person) {
+                if(person.Nm!=message){
+                  return person.Nm.match(person.Nm)
+                }
+              })
+
+            }
+          }
+        }
+      })
+      </script>
     </body>
   </html>
