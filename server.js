@@ -18,7 +18,7 @@ app.use(sessions({
 app.use('/public', express.static('public'));
 // Parse mail and password
 var contenu;
-contenu = fs.readFileSync("account.json", "UTF-8");
+contenu = fs.readFileSync("./storage/account.json", "UTF-8");
 var js = JSON.parse(contenu);
 
 app.get('/login', function (req,resp){
@@ -40,7 +40,7 @@ app.get('/signup', function(req,resp){
 app.post('/login', function (req,resp){
   //resp.end(JSON.stringify(req.body));
   var contenu;
-  contenu = fs.readFileSync("account.json", "UTF-8");
+  contenu = fs.readFileSync("./storage/account.json", "UTF-8");
   var js = JSON.parse(contenu);
   session = req.session;
   if (session.uniqueID) {
@@ -74,13 +74,13 @@ app.post('/createAccount', function(req,resp){ //Post Response
   var password = req.body.password;
 
    try {
-        let userData = fs.readFileSync('account.json');
+        let userData = fs.readFileSync('./storage/account.json');
         userData = JSON.parse(userData);
         userData.push({
            email:mail,
            password:password
         });
-        fs.writeFileSync('account.json', JSON.stringify(userData,null,2));
+        fs.writeFileSync('./storage/account.json', JSON.stringify(userData,null,2));
     } catch (error) {
         console.log(error);
     }
@@ -95,7 +95,7 @@ app.post('/', function(req,resp){ //Post Response
   var events = req.body.event;
 
    try {
-        let userData = fs.readFileSync('attendants.json');
+        let userData = fs.readFileSync('./storage/attendants.json');
         userData = JSON.parse(userData);
         userData.push({
            FamilyName:familyName,
@@ -104,7 +104,7 @@ app.post('/', function(req,resp){ //Post Response
            email:mail,
            events:events
         });
-        fs.writeFileSync('attendants.json', JSON.stringify(userData,null,2));
+        fs.writeFileSync('./storage/attendants.json', JSON.stringify(userData,null,2));
     } catch (error) {
         console.log(error);
     }

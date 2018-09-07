@@ -1,392 +1,234 @@
-  <!DOCTYPE html>
-  <html>
-    <head>
-      <meta charset="utf-8">
-      <title></title>
-      <link rel="stylesheet" type="text/css" href="/public/cours.css"/>
-      <script src="https://cdn.bootcss.com/vue/2.3.3/vue.min.js" type="text/javascript" charset="utf-8"></script>
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" crossorigin="anonymous">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      <script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="/public/cours.css"/>
+    <script src="https://cdn.bootcss.com/vue/2.3.3/vue.min.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
 
-      <script  src = "/public/cours.js"></script>
 
-      <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    </head>
-    <body>
-      <h1>
-        <p style="text-align:center"> PFH Colloque</p>
-      </h1>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  </head>
+  <body>
+    <h1>
+      <p style="text-align:center"> PFH Colloque</p>
+    </h1>
 
-      <div class="menu">
-        <ul id="onglets">
-          <li>
-            <a id ="ongletEntreprise"href="#entreprise" style="text-decoration : none" class="onglet"> Business Forum</a>
-          </li>
-          <li>
-            <a id ="ongletInternationale" href="#internationale" style="text-decoration : none"class="onglet"> International Forum </a>
-          </li>
-          <li>
-            <a id ="ongletReservation" href="#reservation" style="text-decoration : none"class="onglet"> Save your place !</a>
-          </li>
-          <li>
-            <a id ="ongletContact" href ="#contact" style="text-decoration : none"class="onglet"> Contact</a>
-          </li>
-        </ul>
-      </div>
-      <form  action="/logout" method="post">
-        <input type="image" src="./public/assets/deconnecte.png" alt="Submit Form" style="width :30px"/>
-      </form>
+    <div class="menu">
+      <ul id="onglets">
+        <li>
+          <a id ="ongletEntreprise"href="#entreprise" style="text-decoration : none" class="onglet"> Business Forum</a>
+        </li>
+        <li>
+          <a id ="ongletInternationale" href="#internationale" style="text-decoration : none"class="onglet"> International Forum </a>
+        </li>
+        <li>
+          <a id ="ongletReservation" href="#reservation" style="text-decoration : none"class="onglet"> Save your place !</a>
+        </li>
+        <li>
+          <a id ="ongletContact" href ="#contact" style="text-decoration : none"class="onglet"> Contact</a>
+        </li>
+      </ul>
+    </div>
+    <form  action="/logout" method="post">
+      <input type="image" src="./public/assets/deconnecte.png" alt="Submit Form" style="width :30px"/>
+    </form>
 
-      <div id="demo">
-        <section id ="School" style="margin-bottom : 30px; margin-top:20px">
-          <h1 id ="internationale">International Forum</h1>
-          <div class="form-row">
-            <div class="col">
-              <p class="text">
-              <br>The <b>International Forum</b>(FI) is <b>the second event of the year</b>.</br><br></br>
-              <br>Speakers of the foreign schools come to describe their school. Students of 1A,2A and 3A can also find a lot of </br>
-              <br>information needed for their departure abroad.</br><br></br>
-              <br>Thus, students organize themselves to do the 12 weeks abroad their studies within the school that is in the <br></br>form
-              of internship, double degree, a semester abroad or a summer job.</br>
-              <br></br>
-              <br>Thanks to our team and our guide, no need to search on internet: students have all the necessary information</br> <br></br>
-                  <br><b>If you are interested, join us!</b></br><br></br>
-              </p>
-            </div>
-
-            <div class="col">
-              <img src="./public/assets/im2.jpg" class="image" align="right">
-            </div>
-          </div>
-              <hr style="height: 2px; color: #839D2D; background-color: #839D2D; width: 100%">
-          <h1 >Here are the differents University that you can attend</h1>
-          <table  class="table table-bordered"style="width:500px ; margin-left : 400px; margin-bottom : -20px ; margin-top: 20px" >
-            <td align="center" style="width:26%">
-              <p>Name</p>
-            </td>
-            <td style="width:26%">
-              <p style="text-align :center ">Country</p>
-            </td>
-            <td style="min-width: 200px" align="center">
-              <p >Logo</p>
-            </td>
-          </table>
-          <div v-for="row in gridData">
-            <table class="table table-bordered" style="width:500px; margin-left : 400px; margin-bottom : -5px">
-              <tr>
-                <th>
-                  <p style="width:50px">{{ row.Name }}</p>
-                </th>
-                <th >
-                  {{ row.Country }}
-                </th>
-                <th>
-                  <a v-bind:href="row.Link"><img :src="row.Logo"/></a>
-                </th50
-              </tr>
-            </table>
+    <div id="demo">
+      <section id ="School" style="margin-bottom : 30px; margin-top:20px">
+        <h1 id ="internationale">International Forum</h1>
+        <div class="form-row">
+          <div class="col">
+            <p class="text">
+            <br>The <b>International Forum</b>(FI) is <b>the second event of the year</b>.</br><br></br>
+            <br>Speakers of the foreign schools come to describe their school. Students of 1A,2A and 3A can also find a lot of </br>
+            <br>information needed for their departure abroad.</br><br></br>
+            <br>Thus, students organize themselves to do the 12 weeks abroad their studies within the school that is in the <br></br>form
+            of internship, double degree, a semester abroad or a summer job.</br>
+            <br></br>
+            <br>Thanks to our team and our guide, no need to search on internet: students have all the necessary information</br> <br></br>
+                <br><b>If you are interested, join us!</b></br><br></br>
+            </p>
           </div>
 
-        </section>
-
-
-        <section id="Company">
-          <h1 id="entreprise"> Business Forum</h1>
-          <div class="form-row" style="margin-top : 20px; height:1500px">
-              <div class="col">
-                <p class="text">
-                <br>The <b>Business Forum</b>(BF) is <b>one of the first events of the year</b>.</br><br></br>
-                <br>It allows students to:</br>
-                <br>- 4A: find their <b>4-month internship</b> at the end of the year (from April to July inclusive)</br>
-                <br>- 5A: find their <b>final year internship</b> of 6 months(from January to June) and get their degree and a future job</br><br></br>
-                <br>Many companies (about 70 this year) send their representatives to contact the students (about 300) through </br><br>various workshops:</br>
-                <br>- Conferences</br>
-                <br>- The job dating</br>
-                <br>- The exibition</br><br></br>
-                <br>Thanks to our team and our guide, no need to search on internet: students have all the necessary information</br>
-                    <br>about the organization of the day and the companies</br><br></br>
-                <br ><b>So join us and enjoy this day ! </b></br></p>
-              </div>
-
-              <div class="col">
-                <img src="/public/assets/im1.jpg" class="image" align="right">
-              </div>
-              <hr style="height: 2px; color: #839D2D; background-color: #839D2D; width: 100%">
-
-              <h1 style="margin-left:140px; margin-top : 8px">Here are the differents company that will attend the event</h1>
-
-          <table style="width:500px ; margin-left : 400px; margin-bottom : -20px"class="table table-bordered">
-            <td style="width:35%">
-              <p>Name</p>
-            </td>
-            <td style="min-width: 200px">
-              <p >Logo</p>
-            </td>
-          </table>
-          <div v-for="row in companyData">
-            <table style="width:500px ; margin-left : 400px; margin-bottom : -5px" class="table table-bordered">
-              <tr >
-                <th>
-                  <p style="width:50px">{{ row.Name }}</p>
-                </th>
-                <th>
-                  <a v-bind:href="row.Link"><img :src="row.Logo"/></a>
-                </th>
-              </tr>
-            </table>
+          <div class="col">
+            <img src="./public/assets/im2.jpg" class="image" align="right">
           </div>
+        </div>
+            <hr style="height: 2px; color: #839D2D; background-color: #839D2D; width: 100%">
+        <h1 >Here are the differents University that you can attend</h1>
+        <table  class="table table-bordered"style="width:500px ; margin-left : 400px; margin-bottom : -20px ; margin-top: 20px" >
+          <td align="center" style="width:26%">
+            <p>Name</p>
+          </td>
+          <td style="width:26%">
+            <p style="text-align :center ">Country</p>
+          </td>
+          <td style="min-width: 200px" align="center">
+            <p >Logo</p>
+          </td>
         </table>
-      </section>
-      </div>
-<!--
-      <div id="Confirm" class="all form-row">
-        <p style="font-size:20px; font-style:italic">If you want to attend one of these events, please fill this quick form so we can have a list of all the attendants</p>
-        <form  action="/" method="post">
-
-
-          <div class="form-group col form">
-            <div class="form-row pad">
-              <div class="form-group col">
-                <label class="col-form-label" for="familyname">Family Name :</label>
-                <input v-model="familyName" class="form-control form-control-sm"
-                 placeholder="Ex:Petterson" id="familyname" type="text" name ="familyname">
-              </div>
-              <div class="form-group col">
-                <label class="col-form-label">Name :</label>
-                <input v-model="name" class="form-control form-control-sm"
-                 placeholder="Ex:Jason" type="text" id="name" name="name">
-              </div>
-            </div>
-            <div class="form-group col-auto">
-                <label class="col-form-label">Email :</label>
-                <input v-model="email" name ="mail" class="form-control form-control-sm"
-                 placeholder="Ex:petterson@gmail.com" id="email" type="text">
-            </div>
-            <div class="form-row pad2">
-              <div class="form-group col">
-                <label class="col-form-label"> Promotion :</label>
-                <select class= "form-control custom-select-sm" name="promotion" v-model="promotion" id="promotion">
-                  <option disabled value="">Choose</option>
-                  <option>1A</option>
-                  <option>2A</option>
-                  <option>3A</option>
-                  <option>4A</option>
-                  <option>5A</option>
-                </select>
-              </div>
-              <div class="form-group col">
-                <p>Event</p>
-                <select class= "form-control custom-select-sm" v-model="event" id="event" name="event">
-                  <option disabled value="" >Choose</option>
-                  <option>BF only</option>
-                  <option>IF only</option>
-                </select>
-              </div>
-            </div>
-            <button v-on:click="confirm" class="btn btn-success" id="boutton1">Inscription</button>
-            <button v-on:click="clear" class="btn btn-danger" id="boutton2">Delete</button>
-
-          </div>
-        <div>
-
-          <table class="table form-group col tab ">
-            <th>Family Name</th>
-            <th>Name</th>
-            <th>Promotion</th>
-            <th>Email</th>
-            <th>Event</th>
-            <tr v-for="person in myArray">
-              <td v-html = "person.FamilyNm"></td>
-              <td v-html = "person.Nm" ></td>
-              <td v-html = "person.promo "></td>
-              <td v-html = "person.mail"></td>
-              <td v-html = "person.ev"></td>
+        <div v-for="row in gridData">
+          <table class="table table-bordered" style="width:500px; margin-left : 400px; margin-bottom : -5px">
+            <tr>
+              <th>
+                <p style="width:50px">{{ row.Name }}</p>
+              </th>
+              <th >
+                {{ row.Country }}
+              </th>
+              <th>
+                <a v-bind:href="row.Link"><img :src="row.Logo"/></a>
+              </th50
             </tr>
           </table>
-      </div>
+        </div>
+
+      </section>
+
+
+      <section id="Company">
+        <h1 id="entreprise"> Business Forum</h1>
+        <div class="form-row" style="margin-top : 20px; height:1500px">
+            <div class="col">
+              <p class="text">
+              <br>The <b>Business Forum</b>(BF) is <b>one of the first events of the year</b>.</br><br></br>
+              <br>It allows students to:</br>
+              <br>- 4A: find their <b>4-month internship</b> at the end of the year (from April to July inclusive)</br>
+              <br>- 5A: find their <b>final year internship</b> of 6 months(from January to June) and get their degree and a future job</br><br></br>
+              <br>Many companies (about 70 this year) send their representatives to contact the students (about 300) through </br><br>various workshops:</br>
+              <br>- Conferences</br>
+              <br>- The job dating</br>
+              <br>- The exibition</br><br></br>
+              <br>Thanks to our team and our guide, no need to search on internet: students have all the necessary information</br>
+                  <br>about the organization of the day and the companies</br><br></br>
+              <br ><b>So join us and enjoy this day ! </b></br></p>
+            </div>
+
+            <div class="col">
+              <img src="/public/assets/im1.jpg" class="image" align="right">
+            </div>
+            <hr style="height: 2px; color: #839D2D; background-color: #839D2D; width: 100%">
+
+            <h1 style="margin-left:140px; margin-top : 8px">Here are the differents company that will attend the event</h1>
+
+        <table style="width:500px ; margin-left : 400px; margin-bottom : -20px"class="table table-bordered">
+          <td style="width:35%">
+            <p>Name</p>
+          </td>
+          <td style="min-width: 200px">
+            <p >Logo</p>
+          </td>
+        </table>
+        <div v-for="row in companyData">
+          <table style="width:500px ; margin-left : 400px; margin-bottom : -5px" class="table table-bordered">
+            <tr >
+              <th>
+                <p style="width:50px">{{ row.Name }}</p>
+              </th>
+              <th>
+                <a v-bind:href="row.Link"><img :src="row.Logo"/></a>
+              </th>
+            </tr>
+          </table>
+        </div>
+      </table>
+    </section>
     </div>
 
-    </form>
--->  <div id="reservation" class="all form-row">
+  <div id="reservation" class="all form-row">
 
-      <div class="form-group col form">
+    <div class="form-group col form">
 
-        <div class="form-row pad">
-          <div class="form-group col">
-            <label class="col-form-label">Family Name :</label>
-            <input v-model="familyName" class="form-control form-control-sm" placeholder="Ex:Petterson" id="familyname">
-          </div>
-          <div class="form-group col">
-            <label class="col-form-label">Name :</label>
-            <input v-model="name" class="form-control form-control-sm" placeholder="Ex:Jason" id="name">
-          </div>
+      <div class="form-row pad">
+        <div class="form-group col">
+          <label class="col-form-label">Family Name :</label>
+          <input v-model="familyName" class="form-control form-control-sm" placeholder="Ex:Petterson" id="familyname">
         </div>
-
-        <div class="form-group col-auto">
-            <label class="col-form-label">Email :</label>
-            <input v-model="email" class="form-control form-control-sm" placeholder="Ex:petterson@gmail.com" id="email">
+        <div class="form-group col">
+          <label class="col-form-label">Name :</label>
+          <input v-model="name" class="form-control form-control-sm" placeholder="Ex:Jason" id="name">
         </div>
-
-        <div class="form-row pad2">
-          <div class="form-group col">
-            <p>Promotion</p>
-            <select class= "form-control custom-select-sm" v-model="promotion" id="promotion">
-              <option disabled value="">Choose</option>
-              <option>1A</option>
-              <option>2A</option>
-              <option>3A</option>
-              <option>4A</option>
-              <option>5A</option>
-            </select>
-          </div>
-          <div class="form-group col">
-            <p>Event</p>
-            <select class= "form-control custom-select-sm" v-model="event" id="event">
-              <option disabled value="">Choose</option>
-              <option>FE only</option>
-              <option>FI only</option>
-            </select>
-          </div>
-        </div>
-
-        <button v-on:click="confirm" class="btn btn-success">Inscription</button>
-        <button v-on:click="clear" class="btn btn-danger">Delete</button>
-
       </div>
 
-  <!--Tableau utilisé-->
+      <div class="form-group col-auto">
+          <label class="col-form-label">Email :</label>
+          <input v-model="email" class="form-control form-control-sm" placeholder="Ex:petterson@gmail.com" id="email">
+      </div>
 
-    <div>
+      <div class="form-row pad2">
+        <div class="form-group col">
+          <p>Promotion</p>
+          <select class= "form-control custom-select-sm" v-model="promotion" id="promotion">
+            <option disabled value="">Choose</option>
+            <option>1A</option>
+            <option>2A</option>
+            <option>3A</option>
+            <option>4A</option>
+            <option>5A</option>
+          </select>
+        </div>
+        <div class="form-group col">
+          <p>Event</p>
+          <select class= "form-control custom-select-sm" v-model="event" id="event">
+            <option disabled value="">Choose</option>
+            <option>FE only</option>
+            <option>FI only</option>
+          </select>
+        </div>
+      </div>
 
-      <table class="table form-group col tab ">
-        <th>Family Name</th>
-        <th>Name</th>
-        <th>Promotion</th>
-        <th>Email</th>
-        <th>Event</th>
-        <tr v-for="person in myArray">
-          <td v-html = "person.FamilyNm"></td>
-          <td v-html = "person.Nm" ></td>
-          <td v-html = "person.promo "></td>
-          <td v-html = "person.mail"></td>
-          <td v-html = "person.ev"></td>
-        </tr>
-      </table>
-  </div>
+      <button v-on:click="confirm" class="btn btn-success">Inscription</button>
+      <button v-on:click="clear" class="btn btn-danger">Delete</button>
+
+    </div>
+
+<!--Tableau utilisé-->
+
+  <div>
+
+    <table class="table form-group col tab ">
+      <th>Family Name</th>
+      <th>Name</th>
+      <th>Promotion</th>
+      <th>Email</th>
+      <th>Event</th>
+      <tr v-for="person in myArray">
+        <td v-html = "person.FamilyNm"></td>
+        <td v-html = "person.Nm" ></td>
+        <td v-html = "person.promo "></td>
+        <td v-html = "person.mail"></td>
+        <td v-html = "person.ev"></td>
+      </tr>
+    </table>
+</div>
 
 </div>
 
 <div class="Contacter" style="height:600px" id="contact">
-  <h1>Here is how you can find us :</h1>
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2627.284650195612!2d2.3762239157823872!3d48.814630079283305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e673ccc53893d3%3A0x4cbb99dd41145a86!2s74+Avenue+Maurice+Thorez%2C+94200+Ivry-sur-Seine!5e0!3m2!1sfr!2sfr!4v1536224265411"
+<h1>Here is how you can find us :</h1>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2627.284650195612!2d2.3762239157823872!3d48.814630079283305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e673ccc53893d3%3A0x4cbb99dd41145a86!2s74+Avenue+Maurice+Thorez%2C+94200+Ivry-sur-Seine!5e0!3m2!1sfr!2sfr!4v1536224265411"
 
-  width="100%" height="80%"  frameborder="0" style="position: relative" allowfullscreen></iframe>
+width="100%" height="80%"  frameborder="0" style="position: relative" allowfullscreen></iframe>
 
 </div>
 
-    </body>
+  </body>
 
-    <!--Script : récupération des informations du questionnaire dans des variables-->
 
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src = "/public/table.js"></script>
+    <script src = "/public/form.js"></script>
     <script>
 
-      /*Form's part*/
-
-
-      </script>
-      <script>
-      new Vue({
-        el: '#demo',
-        data: {
-          searchQuery: '',
-          gridColumns: ['Name', 'Country','Logo'],
-          gridData: [
-            { Name: 'Glyndwr University', Country: 'Wales', Logo: 'http://santiagocuervo.com/wp-content/uploads/2011/07/glyndwr_logo.jpg', Link:'https://www.glyndwr.ac.uk/' },
-            { Name: 'Tama University', Country: 'Tokyo', Logo: 'https://journalducoin.com/wp-content/uploads/2018/04/Tama-University-logo-1.jpg',Link:'https://www.tama.ac.jp/english/' },
-            { Name: 'Polytechnique Montreal', Country: 'Canada', Logo: 'https://www.directioninformatique.com/wp-content/uploads/2013/05/Polytechnique_Montreal_logo_200_200.jpg', Link:'http://www.polymtl.ca/' },
-            { Name: 'Heriot-Watt University', Country: 'Scotland', Logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Heriot-Watt_University_logo.svg/1200px-Heriot-Watt_University_logo.svg.png', Link:'https://www.hw.ac.uk/' }
-          ],
-          companyData:[
-            { Name: 'CGI', Logo: 'https://upload.wikimedia.org/wikipedia/commons/3/32/CGI_logo.svg',
-             Link:'https://www.cgi.fr/' , id:"CGI"},
-
-            { Name: 'GROUPE DES SYSTEMES ET DES HOMMES', Logo: 'http://sinenomine.fr/wp-content/uploads/2013/03/sh.jpg',
-             Link:'https://www.s-h.fr/',id:"GSM" },
-
-            { Name: 'AIRBUS CYBERSECURITY', Logo: 'https://operationnels.com/wp-content/uploads/2015/01/airbus_logo.png',
-            Link:'https://www.airbus.com', id:"Airbus" },
-
-            { Name: 'BI Consulting', Logo: 'http://www.sailing-up.com/ressources/10241/93/bi-consulting-logo-225.png',
-             Link:'https://www.bi-consulting.com ', id:"BI" },
-
-            { Name: 'OXIANE', Logo: 'https://www.authec.fr/wp-content/uploads/2013/03/logo_oxiane1.png',
-             Link:'https://www.oxiane.com/' ,id:"OXIANE"},
-          ]
-
-        }
-      })
-      </script>
-      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-      <script src="https://unpkg.com/vue/dist/vue.js"></script>
-      <script>
-      var dataconfirm = new Vue({
-        el: '#reservation',
-        data: {
-          familyName: '',
-          name: '',
-          promotion:'',
-          email:'',
-          event:'',
-          myArray: [],
-        },
-         methods: {
-
-           confirm: function() {
-            /*On crée nos variables*/
-            var client = {FamilyNm:this.familyName, Nm:this.name, promo:this.promotion, mail:this.email, ev:this.event};
-            var txt = '';
-              /*On crée le texte d'alerte : si plusieurs conditions ne sont pas validées
-              plusieurs phrases apparaissent sur le même message d'alerte*/
-              if (client.FamilyNm===''){
-                txt=txt+'You forget to write your Family Name \n';}
-              if (client.Nm===''){
-                txt=txt+'You forget to put your name \n';}
-              if (client.promo==''){
-                txt=txt+'You forget to select your promotion \n';}
-              if (client.ev==''){
-                txt=txt+'You forget to select an event \n';}
-              if (client.mail===''){
-                txt=txt+'You forget to indicate your email adress\n';}
-              if (client.FamilyNm!=''&&client.Nm!=''&&client.mail!=''&&client.ev!=''&&client.promo!='') {
-                  txt='Valid Inscription : Good luck';
-                  this.myArray.push(client);
-                }
-
-              alert(txt);
-              document.getElementById("familyname").value =document.getElementById("name").value=document.getElementById("email").value='';
-              document.getElementById("event").value=document.getElementById("promotion").value='';
-
-          },
-
-          clear : function(){
-            //console.log(this.myArray.FamilyNm[0]);
-            var message = prompt("Research a name", "Put your name");
-            //Essayer de comparer la variable "message" à celle contenant le nom lors du login
-            if(message!=null){
-              dataconfirm.myArray = dataconfirm.myArray.filter(function (person) {
-                if(person.Nm!=message){
-                  return person.Nm.match(person.Nm)
-                }
-              })
-
-            }
-          }
-        }
-      })
-      </script>
-    </body>
-  </html>
+    </script>
+  </body>
+</html>
