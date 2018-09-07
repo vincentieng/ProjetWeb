@@ -27,7 +27,7 @@ app.get('/login', function (req,resp){
     resp.redirect('/redirects');
   }
 
-  resp.sendFile(__dirname + '/views/signin.html');
+  resp.sendFile(__dirname + '/views/index.html');
   //resp.sendFile('./public/contact.html',{root:__dirname});
 
 });
@@ -66,7 +66,7 @@ app.get('/redirects', function(req,resp){
     resp.sendFile('./src/contact.html',{root:__dirname});
   }
   else {
-    resp.sendFile(__dirname + '/views/signin.html');
+    resp.sendFile(__dirname + '/views/index.html');
   }
 })
 app.post('/createAccount', function(req,resp){ //Post Response
